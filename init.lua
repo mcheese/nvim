@@ -21,18 +21,22 @@ vim.opt.rtp:prepend(lazypath)
 -- plugins
 
 require("lazy").setup({
-  { 'maxmx03/solarized.nvim' },
-  { 'olimorris/onedarkpro.nvim' },
-  { 'nvim-tree/nvim-tree.lua', dependencies = { "nvim-tree/nvim-web-devicons" } },
-  { 'sbdchd/neoformat' },
-  { 'ojroques/nvim-hardline' },
-  { 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' },
-  { 'williamboman/mason.nvim' },
-  { 'williamboman/mason-lspconfig.nvim' },
-  { 'neovim/nvim-lspconfig' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/nvim-cmp' },
-  { 'nvim-treesitter/nvim-treesitter' },
+  spec = {
+    { 'maxmx03/solarized.nvim' },
+    { 'olimorris/onedarkpro.nvim' },
+    { 'nvim-tree/nvim-tree.lua', dependencies = { "nvim-tree/nvim-web-devicons" } },
+    --{ 'sbdchd/neoformat' },
+    { 'ojroques/nvim-hardline' },
+    { 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' },
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'nvim-treesitter/nvim-treesitter' },
+  },
+
+  checker = { enabled = true },
 })
 
 require("nvim-tree").setup {}
@@ -61,7 +65,7 @@ require("onedarkpro").setup {
 local lsp_zero = require('lsp-zero')
 
 local lsp_attach = function(client, bufnr)
-  local opts = {buffer = bufnr}
+  local opts = { buffer = bufnr }
 
   vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
   vim.keymap.set('n', '<leader>t', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
@@ -73,7 +77,7 @@ local lsp_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+  vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
   vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 end
 
@@ -97,7 +101,7 @@ local cmp = require('cmp')
 
 cmp.setup({
   sources = {
-    {name = 'nvim_lsp'},
+    { name = 'nvim_lsp' },
   },
   snippet = {
     expand = function(args)
@@ -136,7 +140,7 @@ vim.wo.relativenumber = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.encoding = 'utf-8'
-vim.opt.listchars = { tab='»·',trail='·',nbsp='·' }
+vim.opt.listchars = { tab = '»·', trail = '·', nbsp = '·' }
 vim.opt.list = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -146,4 +150,3 @@ vim.opt.cursorline = true
 vim.o.termguicolors = true
 vim.o.background = 'dark'
 vim.cmd.colorscheme 'onedark'
-
