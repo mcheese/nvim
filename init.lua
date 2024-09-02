@@ -25,7 +25,6 @@ require("lazy").setup({
     { 'maxmx03/solarized.nvim' },
     { 'olimorris/onedarkpro.nvim' },
     { 'nvim-tree/nvim-tree.lua', dependencies = { "nvim-tree/nvim-web-devicons" } },
-    --{ 'sbdchd/neoformat' },
     { 'ojroques/nvim-hardline' },
     { 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' },
     { 'williamboman/mason.nvim' },
@@ -48,10 +47,10 @@ require("nvim-treesitter.configs").setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
+      init_selection = "<leader>v", -- set to `false` to disable one of the mappings
+      node_incremental = "<C-k>",
+      scope_incremental = "<C-l>",
+      node_decremental = "<C-j>",
     },
   },
 }
@@ -127,7 +126,6 @@ vim.keymap.set('n', '<leader>h', '<C-W><C-H>')
 vim.keymap.set('n', '<leader>l', '<C-W><C-L>')
 vim.keymap.set('n', '<leader>i', ':tabprevious<CR>')
 vim.keymap.set('n', '<leader>o', ':tabnext<CR>')
-vim.keymap.set('n', '<C-K><C-F>', ':Neoformat<CR>')
 vim.keymap.set('n', '<ESC>', ':noh<CR><ESC>') -- clear highlight on ESC
 
 
@@ -137,16 +135,17 @@ vim.keymap.set('n', '<ESC>', ':noh<CR><ESC>') -- clear highlight on ESC
 
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.encoding = 'utf-8'
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.encoding = 'utf-8'
 vim.opt.listchars = { tab = '»·', trail = '·', nbsp = '·' }
 vim.opt.list = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.cursorline = true
-
-vim.o.termguicolors = true
-vim.o.background = 'dark'
+vim.opt.scrolloff = 5
+vim.opt.termguicolors = true
+vim.opt.background = 'dark'
 vim.cmd.colorscheme 'onedark'
+
