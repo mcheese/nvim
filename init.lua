@@ -88,7 +88,7 @@ lsp_zero.extend_lspconfig({
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'clangd', 'rust_analyzer', 'lua_ls', 'pyright', 'powershell_es', 'bashls', },
+  ensure_installed = { 'clangd', 'rust_analyzer', 'lua_ls', 'pyright', 'powershell_es', 'bashls', 'zls', },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})
@@ -108,7 +108,15 @@ cmp.setup({
       vim.snippet.expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert({}),
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = function()
+      if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          cmp.complete()
+        end
+      end
+  }),
 })
 
 -------------------------------------------------------------------------------
