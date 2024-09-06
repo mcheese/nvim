@@ -125,7 +125,11 @@ cmp.setup({
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.keymap.set('i', 'jk', '<ESC>')
+vim.keymap.set('i', 'Jk', '<ESC>') -- cant figure out a better way...
+vim.keymap.set('i', 'JK', '<ESC>')
 vim.keymap.set('i', 'kj', '<ESC>')
+vim.keymap.set('i', 'Kj', '<ESC>')
+vim.keymap.set('i', 'KJ', '<ESC>')
 vim.keymap.set('n', '<leader>n', ':set relativenumber! number!<CR>', { silent = true })
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>j', '<C-W><C-J>')
@@ -134,7 +138,7 @@ vim.keymap.set('n', '<leader>h', '<C-W><C-H>')
 vim.keymap.set('n', '<leader>l', '<C-W><C-L>')
 vim.keymap.set('n', '<leader>i', ':tabprevious<CR>')
 vim.keymap.set('n', '<leader>o', ':tabnext<CR>')
-vim.keymap.set('n', '<ESC>', ':noh<CR><ESC>') -- clear highlight on ESC
+vim.keymap.set('n', '<ESC>', ':noh<CR><ESC>', { silent = true }) -- clear highlight on ESC
 
 
 
