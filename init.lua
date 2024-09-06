@@ -137,11 +137,25 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = function()
       if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-        else
-          cmp.complete()
-        end
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+      else
+        cmp.complete()
       end
+    end,
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+      else
+        fallback()
+      end
+    end,
   }),
 })
 
