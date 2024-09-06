@@ -33,6 +33,8 @@ require("lazy").setup({
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
     { 'nvim-treesitter/nvim-treesitter' },
+    --{ 'epwalsh/obsidian.nvim', dependencies = { "nvim-lua/plenary.nvim" } },
+    { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
   },
 
   checker = { enabled = true },
@@ -60,6 +62,30 @@ require("onedarkpro").setup {
     highlight_inactive_windows = true,
   }
 }
+
+--require("obsidian").setup {
+--    workspaces = {
+--      {
+--        name = "notes",
+--        path = "~/notes",
+--      },
+--    },
+--    mappings = {
+--        ["<leader>g"] = {
+--      action = function()
+--        return require("obsidian").util.gf_passthrough()
+--      end,
+--      opts = { noremap = false, expr = true, buffer = true },
+--    },
+--    -- Smart action depending on context, either follow link or toggle checkbox.
+--    ["<leader><leader>"] = {
+--      action = function()
+--        return require("obsidian").util.smart_action()
+--      end,
+--      opts = { buffer = true, expr = true },
+--    }
+--    }
+--}
 
 local lsp_zero = require('lsp-zero')
 
@@ -139,6 +165,11 @@ vim.keymap.set('n', '<leader>l', '<C-W><C-L>')
 vim.keymap.set('n', '<leader>i', ':tabprevious<CR>')
 vim.keymap.set('n', '<leader>o', ':tabnext<CR>')
 vim.keymap.set('n', '<ESC>', ':noh<CR><ESC>', { silent = true }) -- clear highlight on ESC
+-- telescope
+vim.keymap.set('n', '<leader>ff', "<cmd>Telescope find_files<CR>")
+vim.keymap.set('n', '<leader>fg', "<cmd>Telescope live_grep<CR>")
+vim.keymap.set('n', '<leader>fb', "<cmd>Telescope buffers<CR>")
+vim.keymap.set('n', '<leader>fh', "<cmd>Telescope help_tags<CR>")
 
 
 
@@ -160,4 +191,5 @@ vim.opt.scrolloff = 5
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
 vim.cmd.colorscheme 'onedark'
+
 
